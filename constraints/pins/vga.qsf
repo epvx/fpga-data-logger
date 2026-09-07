@@ -1,0 +1,10 @@
+#============================================================
+# VGA
+#============================================================
+
+#set_location_assignment PIN_R1 -to vga_rgb[2] #R
+#set_location_assignment PIN_N1 -to vga_rgb[1] #G
+#set_location_assignment PIN_M1 -to vga_rgb[0] #B
+
+#set_location_assignment PIN_L1 -to vga_hsync
+#set_location_assignment PIN_J1 -to vga_vsync

@@ -1,0 +1,229 @@
+#============================================================
+# MAXimator
+# Intel Quartus Prime 24.1 Lite
+#
+# project template
+# Board : MAXimator
+# FPGA  : MAX 10 10M08DAF256C8G
+#============================================================
+
+#============================================================
+# Signal naming convention
+#
+# clk          - 10 MHz oscillator
+# rst_n        - active low reset
+#
+# led[3:0]     - user LEDs
+# btn[1:0]      - user buttons
+#
+# seg[7:0]     - seven-segment outputs (A,B,C,D,E,F,G,DP)
+# digit[3:0]   - digit enables
+#
+# uart_tx/rx   - USB UART
+#
+# sd_clk       - SPI clock
+# sd_mosi      - Master Out Slave In
+# sd_miso      - Master In Slave Out
+# sd_cs        - chip select
+# sd_det[1:0]  - detect
+#
+# rgb          - WS2812 data
+#============================================================
+
+
+#============================================================
+# Device
+#============================================================
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M08DAF256C8G
+
+set_global_assignment -name TOP_LEVEL_ENTITY top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+
+#============================================================
+# Quartus
+#============================================================
+
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 24.1STD.0
+set_global_assignment -name LAST_QUARTUS_VERSION "24.1std.0 Lite Edition"
+
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
+
+#============================================================
+# Device Filters
+#============================================================
+
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 256
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
+
+#============================================================
+# Temperature
+#============================================================
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+
+#============================================================
+# Simulation
+#============================================================
+
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (SystemVerilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+
+#============================================================
+# Partitions
+#============================================================
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+
+#============================================================
+# Timing Constraints
+#============================================================
+
+
+#============================================================
+# CLOCK (10 MHz oscillator)
+#============================================================
+
+set_location_assignment PIN_L3 -to clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
+
+#============================================================
+# LEDs
+#============================================================
+
+set_location_assignment PIN_M16 -to led[0]
+set_location_assignment PIN_N16 -to led[1]
+set_location_assignment PIN_P16 -to led[2]
+set_location_assignment PIN_R16 -to led[3]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[3]
+
+#============================================================
+# USB-UART
+#============================================================
+
+set_location_assignment PIN_A13 -to uart_rx
+set_location_assignment PIN_B13 -to uart_tx
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uart_tx
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to uart_rx
+
+#============================================================
+# microSD
+#============================================================
+
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to sd_miso
+
+set_location_assignment PIN_A5 -to sd_clk
+set_location_assignment PIN_A4 -to sd_mosi
+set_location_assignment PIN_A2 -to sd_miso
+set_location_assignment PIN_A3 -to sd_cs
+
+set_location_assignment PIN_A14 -to sd_det[0]
+set_location_assignment PIN_A15 -to sd_det[1]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_mosi
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_miso
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_cs
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_det[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_det[1]
+
+#============================================================
+# VGA
+#============================================================
+
+#set_location_assignment PIN_R1 -to vga_rgb[2] #R
+#set_location_assignment PIN_N1 -to vga_rgb[1] #G
+#set_location_assignment PIN_M1 -to vga_rgb[0] #B
+
+#set_location_assignment PIN_L1 -to vga_hsync
+#set_location_assignment PIN_J1 -to vga_vsync
+
+#============================================================
+# USER GPIO
+#============================================================
+
+#==========================
+# BUTTONS
+#==========================
+
+set_location_assignment PIN_B16 -to btn[0]
+set_location_assignment PIN_B15 -to btn[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to btn[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to btn[1]
+
+set_location_assignment PIN_R15 -to rst_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
+
+#==========================
+# RGB 
+#==========================
+
+set_location_assignment PIN_C15 -to rgb
+
+#==========================
+# 7-SEGMENT
+#==========================
+
+set_location_assignment PIN_L16 -to seg[0]
+set_location_assignment PIN_J15 -to seg[1]
+set_location_assignment PIN_J16 -to seg[2]
+set_location_assignment PIN_H15 -to seg[3]
+set_location_assignment PIN_H16 -to seg[4]
+set_location_assignment PIN_G15 -to seg[5]
+set_location_assignment PIN_G16 -to seg[6]
+set_location_assignment PIN_F16 -to seg[7]
+
+set_location_assignment PIN_E15 -to digit[0]
+set_location_assignment PIN_E16 -to digit[1]
+set_location_assignment PIN_D15 -to digit[2]
+set_location_assignment PIN_D16 -to digit[3]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[7]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[3]
+
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH uart_tx_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME uart_tx_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id uart_tx_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME uart_tx_tb -section_id uart_tx_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE simulation/uart_tx_tb.sv -section_id uart_tx_tb
+set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -section_id eda_simulation
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/sd card/sd_controller.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/top.sv
+set_global_assignment -name SDC_FILE constraints/maximator.sdc
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/uart/uart_tx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/uart/uart_rx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/uart/uart.sv
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/sd card/sd_spi.sv"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

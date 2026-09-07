@@ -1,0 +1,19 @@
+#============================================================
+# microSD
+#============================================================
+
+#set_location_assignment PIN_A5  -to sd_clk
+#set_location_assignment PIN_A4  -to sd_mosi
+#set_location_assignment PIN_A2  -to sd_miso
+#set_location_assignment PIN_A3  -to sd_cs
+
+#set_location_assignment PIN_A14 -to sd_det[0]
+#set_location_assignment PIN_A15 -to sd_det[1]
+
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_clk
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_mosi
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_miso
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_cs
+
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_det[0]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sd_det[1]

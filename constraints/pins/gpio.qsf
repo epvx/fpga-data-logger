@@ -1,0 +1,53 @@
+#============================================================
+# USER GPIO
+#============================================================
+
+#==========================
+# SWITCHES
+#==========================
+
+set_location_assignment PIN_B16 -to sw[0]
+set_location_assignment PIN_B15 -to sw[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sw[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sw[1]
+
+set_location_assignment PIN_R15 -to rst_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
+
+#==========================
+# RGB 
+#==========================
+
+set_location_assignment PIN_C15 -to rgb
+
+#==========================
+# 7-SEGMENT
+#==========================
+
+set_location_assignment PIN_L16 -to seg[0]
+set_location_assignment PIN_J15 -to seg[1]
+set_location_assignment PIN_J16 -to seg[2]
+set_location_assignment PIN_H15 -to seg[3]
+set_location_assignment PIN_H16 -to seg[4]
+set_location_assignment PIN_G15 -to seg[5]
+set_location_assignment PIN_G16 -to seg[6]
+set_location_assignment PIN_F16 -to seg[7]
+
+set_location_assignment PIN_E15 -to digit[0]
+set_location_assignment PIN_E16 -to digit[1]
+set_location_assignment PIN_D15 -to digit[2]
+set_location_assignment PIN_D16 -to digit[3]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to seg[7]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to digit[3]

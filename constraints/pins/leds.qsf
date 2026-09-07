@@ -1,0 +1,13 @@
+#============================================================
+# LEDs
+#============================================================
+
+set_location_assignment PIN_M16 -to led[0]
+set_location_assignment PIN_N16 -to led[1]
+set_location_assignment PIN_P16 -to led[2]
+set_location_assignment PIN_R16 -to led[3]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led[3]
